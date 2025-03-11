@@ -24,4 +24,10 @@ class CartViewModel @Inject constructor(
             repository.decrementQuantity(productId)
         }
     }
+
+    fun updateQuantity(productId: Int, newQuantity: Int){
+        viewModelScope.launch {
+            repository.updateProductQuantity(productId, newQuantity)
+        }
+    }
 }

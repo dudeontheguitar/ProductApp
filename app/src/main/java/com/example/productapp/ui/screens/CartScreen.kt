@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.productapp.data.local.ProductEntity
@@ -52,10 +53,18 @@ fun CartItem(product: ProductEntity, viewModel: CartViewModel) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(product.name)
-        Row {
-            Button(onClick = { viewModel.decrementQuantity(product.id) }) { Text("-") }
-            Text("${product.quantity}")
-            Button(onClick = { viewModel.incrementQuantity(product.id) }) { Text("+") }
+        if(product.quantity == 1){
+            Row {
+                Button(onClick = {viewModel.updateQuantity(product.id, 0)}) { Text("del",  fontSize = 10.sp) }
+                Text("${product.quantity}")
+                Button(onClick = {viewModel.incrementQuantity(product.id)}) { Text("+",  fontSize = 10.sp)}
+            }
+        }else{
+            Row {
+                Button(onClick = { viewModel.decrementQuantity(product.id) }) { Text("-",  fontSize = 10.sp) }
+                Text("${product.quantity}")
+                Button(onClick = { viewModel.incrementQuantity(product.id) }) { Text("+",  fontSize = 10.sp) }
+            }
         }
     }
 }

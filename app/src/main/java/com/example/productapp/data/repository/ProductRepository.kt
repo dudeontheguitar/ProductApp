@@ -27,4 +27,13 @@ class ProductRepository @Inject constructor(
     suspend fun decrementQuantity(productId: Int) {
         productDao.decrementQuantity(productId)
     }
+
+    suspend fun updateProductQuantity(productId: Int, newQuantity: Int) {
+        productDao.updateQuantity(productId, newQuantity)
+    }
+
+    suspend fun clearDatabse() {
+        productDao.clearDatabase()
+    }
+
 }

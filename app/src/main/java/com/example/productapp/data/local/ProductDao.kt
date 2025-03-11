@@ -37,4 +37,12 @@ interface ProductDao {
 
     @Query("UPDATE products SET quantity = quantity - 1 WHERE id = :productId AND quantity > 1")
     suspend fun decrementQuantity(productId: Int)
+
+
+    @Query("UPDATE products SET quantity = :newQuantity WHERE id = :productId")
+    suspend fun updateQuantity(productId: Int, newQuantity: Int)
+
+    @Query("DELETE FROM products")
+    suspend fun clearDatabase()
+
 }
