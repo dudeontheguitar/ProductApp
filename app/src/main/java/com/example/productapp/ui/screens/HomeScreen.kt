@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -23,7 +24,8 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.productapp.R
 import com.example.productapp.data.local.ProductEntity
-import com.example.productapp.ui.theme.Pink40
+import com.example.productapp.ui.theme.CustomFont
+import com.example.productapp.ui.theme.CustomFont1
 import com.example.productapp.ui.theme.Purple40
 import com.example.productapp.ui.viewmodel.HomeViewModel
 
@@ -35,7 +37,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Home") },
+                title = { Text(text = "Home", fontFamily = CustomFont) },
                 actions = {
                     IconButton(onClick = { navController.navigate("cart") }) {
                         Icon(Icons.Default.ShoppingCart, contentDescription = "Cart")
@@ -66,15 +68,17 @@ fun ProductItem(product: ProductEntity, viewModel: HomeViewModel) {
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp)
+                .height(140.dp)
         )
         Text(
             text = product.name,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            fontFamily = CustomFont
         )
         Text(
             text = "Price: ${product.price}$",
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            fontFamily = CustomFont1
         )
 
         if (product.quantity > 0) {
@@ -112,7 +116,8 @@ fun ProductItem(product: ProductEntity, viewModel: HomeViewModel) {
                     Text(
                         text = "${product.quantity}",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White
+                        color = Color.White,
+                        fontFamily = CustomFont
                     )
 
                     // Кнопка увеличения количества
@@ -139,7 +144,7 @@ fun ProductItem(product: ProductEntity, viewModel: HomeViewModel) {
                 colors = ButtonDefaults.buttonColors(Purple40),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text(text = "Add to Cart", fontSize = 12.sp)
+                Text(text = "Add to Cart", fontSize = 12.sp,  fontFamily = CustomFont)
             }
         }
     }

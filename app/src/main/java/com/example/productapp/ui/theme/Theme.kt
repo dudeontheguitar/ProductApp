@@ -4,12 +4,19 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.example.productapp.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -33,6 +40,27 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+val CustomFont = FontFamily(
+    Font(R.font.rubik_medium, FontWeight.Normal),  // Используем файл custom_font.ttf
+    Font(R.font.rubik_medium, FontWeight.Bold) // Если есть жирный вариант
+)
+val CustomFont1 = FontFamily(
+    Font(R.font.rubik_semibold, FontWeight.Normal),  // Используем файл custom_font.ttf
+    Font(R.font.rubik_semibold, FontWeight.Bold) // Если есть жирный вариант
+)
+
+val CustomTypography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = CustomFont,
+        fontSize = 16.sp
+    ),
+    titleLarge = TextStyle(
+        fontFamily = CustomFont,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    )
+)
+
 @Composable
 fun ProductAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -52,7 +80,7 @@ fun ProductAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = CustomTypography,
         content = content
     )
 }

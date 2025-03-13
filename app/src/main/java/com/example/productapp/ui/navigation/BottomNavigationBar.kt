@@ -1,7 +1,6 @@
 package com.example.productapp.ui.navigation
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -31,7 +30,6 @@ fun BottomNavigationBar(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(64.dp)
             .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)), // Закругляем верхние углы
         color = Red50,
         shadowElevation = 8.dp
@@ -74,4 +72,3 @@ fun BottomNavigationBar(navController: NavController) {
         }
     }
 }
-
