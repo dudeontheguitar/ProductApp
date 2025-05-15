@@ -13,12 +13,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class) // Глобальный скоуп для всего приложения
+@InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideContext(@ApplicationContext context: Context): Context = context // Добавляем это
+    fun provideContext(@ApplicationContext context: Context): Context = context
 
     @Provides
     @Singleton
@@ -29,7 +29,6 @@ object DatabaseModule {
             "product_database"
         ).build()
 
-        // Добавляем дефолтные товары при запуске
         PrepopulateDatabase.insertDefaultProducts(db.productDao())
 
         return db
